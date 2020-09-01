@@ -19,7 +19,7 @@ class Application extends Component {
     
     componentDidUpdate(props, state){
         console.log('OldState = ', state , ', NewState = ', this.state);
-        if(this.state.count > 10 && this.state.count !== state.count){
+        if(this.state.count > 10 && this.state.count !== state.count && !this.state.over10){
             this.setState({over10: true})
         }
     }

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import HighScore from './HighScore';
+import './css/style.css'
 
 class Application extends Component {
     constructor(props){
@@ -24,16 +26,29 @@ class Application extends Component {
         }
     }
 
+    resetCount = (e) => {
+        this.setState({
+            count: 0,
+            over10: false
+        })
+    }
+
     render(){
         let {count} = this.state
         return (
             <div>   
                 <h1>You clicked the Button {count} times</h1>
-                {(this.state.over10) ? 
-                    <h3>You have Click button 10 times</h3>
-                :null}
+               
+                    <HighScore 
+                        // React propty 
+                        over10={this.state.over10}
+                        //New Method 
+                        // can also be writen onReset={this.resetCount}
+                        onReset={(e) => this.resetCount()}
+                    />
+               
                 <span>
-                    <button onClick={()=>this.handleClick()}>Click Me</button>
+                    <button onClick={this.handleClick}>Click Me</button>
                 </span>
             </div>
         );
